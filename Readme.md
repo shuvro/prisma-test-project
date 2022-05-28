@@ -43,12 +43,12 @@ Make sure to replace the values between the curly braces `{}` with the correct o
 
 After following the [Getting started](#Getting-started) guide, the backend should be running on port `4000`. The backend currently have one endpoint:
 
-| Request type | Path             | Query Params                                              | Example                                                                                                                                                                     |
-|--------------|------------------|-----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `GET`        | `/policies`      | `search`, `limit`, `offset`, `sortField`, `sortDirection` | `/policies?search=TK&limit=5&offset=0&sortField=provider&sortDirection=desc`                                                                                                |
-| `POST`       | `/policy`        |                                                           | `{ "firstName": "Nazmul1", "lastName": "Khan","dateOfBirth": "1985-02-28 12:51:27.000","provider": "DAK","insuranceType": "HEALTH","startDate": "1985-02-28 12:51:27.000"}` |
-| `PUT`        | `/policy/{id}`   |                                                           | `{ "startDate": "1985-02-28 12:51:27.000", "firstName": "IIIII" }`                                                                                                          |
-| `GET`        | `policy-history` | `limit`, `offset`                                         | `/policy-history?limit=5&offset=0`                                                                                                                                          |
+| Request type | Path              | Query Params                                              | Example                                                                                                                                                                     |
+|--------------|-------------------|-----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `GET`        | `/policies`       | `search`, `limit`, `offset`, `sortField`, `sortDirection` | `/policies?search=TK&limit=5&offset=0&sortField=provider&sortDirection=desc`                                                                                                |
+| `POST`       | `/policy`         |                                                           | `{ "firstName": "Nazmul1", "lastName": "Khan","dateOfBirth": "1985-02-28 12:51:27.000","provider": "DAK","insuranceType": "HEALTH","startDate": "1985-02-28 12:51:27.000"}` |
+| `PUT`        | `/policy/{id}`    |                                                           | `{ "startDate": "1985-02-28 12:51:27.000", "firstName": "IIIII" }`                                                                                                          |
+| `GET`        | `/policy-history` | `limit`, `offset`                                         | `/policy-history?limit=5&offset=0`                                                                                                                                          |
 
 
 ## Data structure
