@@ -31,10 +31,6 @@ export enum PolicyStatus {
 app.get('/policies', async (req, res) => {
   const { search, offset, limit, sortField, sortDirection } = req.query;
 
-  if(!(sortDirection as string in ['asc', 'desc'])) {
-    return res.json({success: false, message: 'Invalid params sent'})
-  }
-
   const skip = offset ? Number(offset) : 0
   const take = limit ? Number(limit) : 10
   const or: Prisma.PolicyWhereInput = search
@@ -47,7 +43,13 @@ app.get('/policies', async (req, res) => {
     }
     : {};
 
-  
+  let orderBy = {}
+  if(sortField) {
+    orderBy = {
+      [sortField as string] : sortDirection && sortDirection as string in ['asc', 'desc'] ? sortDirection as string : 'desc' 
+    }
+  } 
+
   const policies = await prisma.policy.findMany({
     skip: skip as number,
     take: take as number,
@@ -70,9 +72,7 @@ app.get('/policies', async (req, res) => {
         }
       }
     },
-    orderBy: {
-      [sortField as string]: `${sortDirection}`
-    }
+    orderBy: orderBy
   })
 
   res.json(policies);

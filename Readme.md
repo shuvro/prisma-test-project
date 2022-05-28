@@ -1,39 +1,5 @@
 # Feather Take Home Assessment
 
-Thank you for applying at Feather and taking the time to do this home assessment.
-
-The goal of this project is to let you **show off your coding and problem-solving skills**, on a task that resembles the kind of work you’ll be doing with us.
-
-This coding challenge applies to **frontend, backend, and full-stack roles**. Depending on the position you are applying for, you can focus on your specific area.  
-
-You can spend as little or as much time as you like on this project. We've added some initial boilerplate to help you get started, but **feel free to refactor every part of this app as you may seem fit**.
-
-1. Start by reading the [User story](#User-story) and the [Acceptance criteria](#Acceptance-criteria) to have a clear idea of the requirements.
-2. Use the [Getting started](#Getting-started) guide to set up a local version of the project on your machine.
-3. Take a look at the [Data structure](#Data-structure) and [API](#API) to know what the data looks like.
-4. Finish by answering a [couple of questions](#General-questions) about the project. You can answer them on this very same file.
-
-## User story
-
-As a user, I want to be able to search for policies using any of the text fields displayed on the table.
-
-When a search filter is applied, I want to see the filtered information on the same table.
-
-When a search filter is applied, I want to be able to clear the current search filter, this action will display the original information.
-
-## Acceptance criteria
-
-- Show only `ACTIVE` and `PENDING` policies.
-- Do not display any results if there are no matches
-- Clearing the search should return the table to its original state
-
-## Task requirements
-
-- Make sure your feature **works as expected**
-- Your code is **easy to understand** and follows best practices
-- The project **runs with one command,** and without any external configuration
-- **Your code has tests** to make sure the functionalities work as expected
-
 ## Getting started
 
 1. Make sure you have [Docker](https://www.docker.com/products/docker-desktop/) installed on your machine
@@ -77,11 +43,13 @@ Make sure to replace the values between the curly braces `{}` with the correct o
 
 After following the [Getting started](#Getting-started) guide, the backend should be running on port `4000`. The backend currently have one endpoint:
 
-| Request type | Path        | Query Params | Example                   |
-| ------------ | ----------- | ------------ | ------------------------- |
-| `GET`        | `/policies` | `search`     | `/policies?search=BARMER` |
+| Request type | Path             | Query Params                                              | Example                                                                                                                                                                     |
+|--------------|------------------|-----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `GET`        | `/policies`      | `search`, `limit`, `offset`, `sortField`, `sortDirection` | `/policies?search=TK&limit=5&offset=0&sortField=provider&sortDirection=desc`                                                                                                |
+| `POST`       | `/policy`        |                                                           | `{ "firstName": "Nazmul1", "lastName": "Khan","dateOfBirth": "1985-02-28 12:51:27.000","provider": "DAK","insuranceType": "HEALTH","startDate": "1985-02-28 12:51:27.000"}` |
+| `PUT`        | `/policy/{id}`   |                                                           | `{ "startDate": "1985-02-28 12:51:27.000", "firstName": "IIIII" }`                                                                                                          |
+| `GET`        | `policy-history` | `limit`, `offset`                                         | `/policy-history?limit=5&offset=0`                                                                                                                                          |
 
-Feel free to update or add more endpoints to accommodate or improve your solution.
 
 ## Data structure
 
@@ -118,11 +86,16 @@ Feel free to update or add more endpoints to accommodate or improve your solutio
 ## General questions
 
 - How much time did you spend working on the solution?
+  - ~ 5 hours
 - What’s the part of the solution you are most proud of?
-
-  _You can share a code snippet here if you feel like it_
-
+  - It should be backend's  `src/index.ts` file
+  - I have also updated the docker-compose a bit. As user story was updated a bit later, I had updated the frontend also with the old  user story
 - If you had more time, what other things you would like to do?
-- Do you have any feedback regarding this coding challenge?  
-
-  _Is the initial setup working?, is something missing?, or any other comment_
+  - I would improve the `orderBy` fields filter
+  - add some more field validations
+  - add/update the customer's family members history tracking
+  - update the frontend with forms to support addition / update operation
+  - lastly, I never had the exposure to Prisma before, so I would dig in more to update stuff more accurately
+- Do you have any feedback regarding this coding challenge?
+  - No it's all good. I just had issues with docker-compose but can really remember what was that. So I updated that accordingly
+  - One more thing, the customer's family member record schema is not correct by default. I guess it would be better if I could clarify more about this.
